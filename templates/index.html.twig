@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Temperature{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+
+    {% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary mb-3">
+    <a class="navbar-brand" href="#">{{ information.name }}</a>
+</nav>
+
+    <div class="container">
+         <div class="row">
+             <h2>Température quotidienne</h2>
+
+             <div class="col-lg-12">
+                 <h3 class="text-center mt-3">Juillet 2015</h3>
+                 <table class="calendar-table">
+                     {% for i  in 0..weeks %}
+                     <tr>
+                         {% for key, days in weekdays %}
+                         <td>
+                             {% if(i ==0) %}
+                                 <div class="calendar__week__days">{{ days }}</div>
+                             {% endif %}
+
+                             <div class="calendar__temp">
+                                 {% if(filtertemp(start,key,i,temperature) != []) %}
+                                     <div class="calendar_day">
+                                         {{  calendarformat(start,key,i)  }}
+                                     </div>
+
+                                     <div class="calendar__max__temp">Max : {{ filtertemp(start,key,i,temperature)[0] }} °C</div>
+                                     <div class="calendar__average__temp"> Moy : {{ filtertemp(start,key,i,temperature)[2] }} °C</div>
+                                     <div class="calendar__min__temp">Min :  {{ filtertemp(start,key,i,temperature)[1] }} °C</div>
+                                 {% endif %}
+                             </div>
+                         </td>
+                         {% endfor %}
+                     </tr>
+                     {% endfor %}
+                 </table>
+             </div>
+
+         </div>
+        <div class="row mt-5">
+            <h2>Meilleur jour pour aller au festival d'été</h2>
+            <div class="col-lg-12">
+                <table class="best___table">
+                    <tr>
+                        <td><b>Date</b></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            {{ bestday | date("d M Y") }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Moyenne par période de la journée</h2>
+               <div class="col-lg-12">
+                   <table class="calendar-table">
+                       <tr class="average">
+                           <td>Matin</td>
+                           <td>Apres-midi</td>
+                           <td>Soir</td>
+                           <td>Nuit</td>
+                       </tr>
+                       <tr>
+                           <td>{{ average.morning }} °C</td>
+                           <td>{{ average.afternoon }} °C</td>
+                           <td>{{ average.evening }} °C</td>
+                           <td>{{ average.night }} °C</td>
+                       </tr>
+                   </table>
+               </div>
+        </div>
+    </div>
+
+{% block javascripts %}
+
+{% endblock %}
+</body>
+</html>

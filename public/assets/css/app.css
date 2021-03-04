@@ -1,0 +1,67 @@
+.calendar-table{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+.calendar-table td{
+    border: 1px solid #ccc;
+    vertical-align: top;
+    width: 14.29%;
+    height: 100px;
+}
+.calendar-table td .calendar__temp{
+    padding: 10px;
+}
+
+.calendar-table td .calendar__week__days{
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.calendar__week__days{
+    font-weight: bold;
+    color: #000;
+    font-size: 1.3em;
+}
+
+.calendar_day{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.calendar__min__temp, .calendar__max__temp,.calendar__average__temp{
+    text-align: center;
+}
+
+.calendar__max__temp{
+    margin-top: 20px;
+    background-color: #d2283a;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+}
+
+.calendar__min__temp {
+    background-color: #7385ff;
+    color: #fff;
+    width: 100%;
+}
+
+.average td{
+    font-weight: bold;
+    color: #000;
+    font-size: 1em;
+}
+
+.best___table{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 40%;
+}
+
+.best___table td{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
